@@ -8,17 +8,17 @@
 struct ListNode* reverseList(struct ListNode* head) {
     
 
-   struct ListNode *reversed = NULL;
-   struct ListNode *curr = head;
+  struct ListNode *reversed = NULL;
+  struct ListNode *curr = head;
 
-    while (curr != NULL) {
+  while (curr != NULL) {
 
-        struct ListNode *next = curr->next;
-        curr->next = reversed;
-        reversed = curr;
-        curr = next;
-    }
+    struct ListNode *next = curr->next;
+    curr->next = reversed;
+    reversed = curr;
+    curr = next;
+  }
 
-return reversed;
+  return reversed;
     
 }

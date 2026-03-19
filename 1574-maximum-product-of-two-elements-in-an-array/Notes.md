@@ -1,0 +1,1 @@
+<h2>maximum-product-of-two-elements-in-an-array Notes</h2><hr>[ Time taken: 6d 3hrs 14m 5s ]

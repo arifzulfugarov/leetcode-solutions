@@ -4,7 +4,7 @@ func isAnagram(s string, t string) bool {
         return false
     }
 
-    count := make(map[rune]int)
+    count := make(map[rune]int, len(s))
     
     for _, r := range s{
         count[r]++

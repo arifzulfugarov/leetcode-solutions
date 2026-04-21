@@ -1,26 +1,44 @@
 class MyHashSet {
 
-    private boolean[] set;
+    
+    private final int BUCKETS = 1000;
+    private LinkedList<Integer>[] table;
 
     public MyHashSet() {
         
-        set = new boolean[10000001];
+        table = new LinkedList[BUCKETS];
+    }
+
+    private int hash(int key) {
+        return key % BUCKETS;
     }
     
     public void add(int key) {
         
-        set[key] = true;
+        int index = hash(key);
+
+        if (table[index] == null) {
+            table[index] = new LinkedList<>();
+        }
+
+        if (!table[index].contains(key)) {
+            table[index].add(key);
+        }
     }
     
     public void remove(int key) {
         
-        set[key] = false;
+        int index = hash(key);
+        if (table[index]!=null) {
+            table[index].remove(Integer.valueOf(key));
+        }
     }
     
     public boolean contains(int key) {
 
-        return set[key];
-        
+        int index = hash(key);
+        return table[index]!=null && table[index].contains(key);
+
     }
 }
 

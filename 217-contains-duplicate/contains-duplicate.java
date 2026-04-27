@@ -1,14 +1,13 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         
-        HashMap<Integer, Integer> counts = new HashMap<>();
+        HashSet<Integer> uniqueNumbers = new HashSet<>();
 
         for (int num : nums) {
-            if (counts.containsKey(num)) {
+            if (uniqueNumbers.contains(num)) {
                 return true;
-            } else {
-                counts.put(num, 1);
-            }
+            } 
+            uniqueNumbers.add(num);
         }
 
         return false;

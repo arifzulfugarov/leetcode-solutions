@@ -1,30 +1,38 @@
 class MinStack() {
 
-    val stack = ArrayDeque<Int>()
-    val minStack = ArrayDeque<Int>()
+    private var capacity = 30000
+    private var stack = IntArray(capacity)
+    private var minStack = IntArray(capacity)
+    private var topIndex = -1
 
     fun push(value: Int) {
-        stack.addLast(value)
 
-        val currentMin = if (minStack.isEmpty()) value else minOf(value, minStack.last())
-        minStack.addLast(currentMin)
+        topIndex++
+        stack[topIndex] = value
+
+        if (topIndex == 0) {
+            minStack[topIndex] = value
+        }else{
+            val currentMin = minStack[topIndex-1]
+            minStack[topIndex] = if (value < currentMin) value else currentMin
+        }
+
     }
 
     fun pop() {
         
-        if (stack.isNotEmpty()){
-            stack.removeLast()
-            minStack.removeLast()
-        }
+       if (topIndex >= 0) {
+            topIndex--
+       }
     }
 
     fun top(): Int {
         
-        return stack.last()
+        return stack[topIndex]
     }
 
     fun getMin(): Int {
-        return minStack.last()
+        return minStack[topIndex]
     }
 
 }

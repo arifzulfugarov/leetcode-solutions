@@ -10,6 +10,7 @@ class Solution {
         val counts = IntArray(26)
 
         for (right in s.indices) {
+            
             val charRight = s[right] - 'a'
             counts[charRight]++
 

@@ -1,30 +1,21 @@
 class Solution {
     fun dailyTemperatures(temperatures: IntArray): IntArray {
         
-        val size = temperatures.size
-        val stack = IntArray(size)
+        val result = IntArray(temperatures.size)
+        val stack = ArrayDeque<Int>()
 
-        var left = 0
+        for (currentIndex in temperatures.indices) {
 
-        while (left < size){
-            
 
-            var right = left + 1
+            while (!stack.isEmpty() && temperatures[currentIndex] > temperatures[stack.last()]){
 
-            
-            while (right < size){
-                if (temperatures[left] < temperatures[right]){
-                    stack[left] = right - left
-                    break
-                }
-                right++
+                val colderIndex = stack.removeLast()
+                result[colderIndex] = currentIndex - colderIndex
             }
-            
-            left++
-        
-            
+
+            stack.addLast(currentIndex)
         }
 
-        return stack
+        return result
     }
 }

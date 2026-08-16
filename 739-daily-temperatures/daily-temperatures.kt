@@ -9,8 +9,8 @@ class Solution {
 
             while (!stack.isEmpty() && temperatures[currentIndex] > temperatures[stack.last()]){
 
-                val colderIndex = stack.removeLast()
-                result[colderIndex] = currentIndex - colderIndex
+                val colderDayIndex = stack.removeLast()
+                result[colderDayIndex] = currentIndex - colderDayIndex
             }
 
             stack.addLast(currentIndex)

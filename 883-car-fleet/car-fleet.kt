@@ -22,11 +22,7 @@ class Solution {
 
                     if (currentTime > fleeTime) {
                         stack.addLast(currentTime)
-                    } else {
-
-                        stack.removeLast()
-                        stack.addLast(fleeTime)
-                    }
+                    } 
                     
                 }
             }
